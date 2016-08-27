@@ -13,9 +13,10 @@ namespace Game1
     public class GameObject
     {
         private Texture2D sprite;
-        private string spriteLocation;
-        private Vector2 position;
+        public string spriteLocation;
+        public Vector2 position;
         private float angle; // Value between 0 - 360 (Degrees)
+        public string name;
 
         public GameObject(string _spriteLocation, Vector2 _position, float _angle = 0)
         {
