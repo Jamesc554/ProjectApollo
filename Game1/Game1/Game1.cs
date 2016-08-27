@@ -13,8 +13,9 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        GameObject obj = new GameObject("test.png", new Vector2(0, 0));
-        GameObject obj1 = new GameObject("test.png", new Vector2(100, 20), 90);
+        GameObject obj = new GameObject("Error.png", new Vector2(0, 0));
+        GameObject obj1 = new GameObject("Brick.png", new Vector2(32, 0), 90);
+        GameObject obj2 = new GameObject("Tile.png", new Vector2(64, 0));
 
         public Game1()
         {
@@ -26,7 +27,7 @@ namespace Game1
                 
             };
             graphics.ApplyChanges();
-            this.IsFixedTimeStep = false;
+            //this.IsFixedTimeStep = false;
             this.IsMouseVisible = true;
             Content.RootDirectory = "Content";
         }
@@ -54,6 +55,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             obj.LoadContent(this.Content);
             obj1.LoadContent(this.Content);
+            obj2.LoadContent(this.Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -94,6 +96,7 @@ namespace Game1
 
             obj.Draw(spriteBatch);
             obj1.Draw(spriteBatch);
+            obj2.Draw(spriteBatch);
 
             spriteBatch.End();
 
