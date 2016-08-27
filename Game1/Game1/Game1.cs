@@ -13,7 +13,7 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        GameObject obj = new GameObject("test.png", new Vector2(20, 20));
+        GameObject obj = new GameObject("test.png", new Vector2(0, 0));
         GameObject obj1 = new GameObject("test.png", new Vector2(100, 20), 90);
 
         public Game1()
