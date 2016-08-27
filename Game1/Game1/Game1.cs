@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-//Push it real deep
+
 
 namespace Game1
 {
@@ -13,7 +13,7 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D texture; //Cheesecake
+        Texture2D texture; 
 
         public Game1()
         {
