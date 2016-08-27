@@ -15,10 +15,38 @@ namespace Game1
         public World world;
         public static WorldController instance;
         public ContentManager content;
+        public int worldSizeX, worldSizeY;
 
         public WorldController()
         {
             instance = this;
+        }
+
+        public void SetWorld(World _world)
+        {
+            world = _world;
+            worldSizeX = (int)_world.size.X;
+            worldSizeY = (int)_world.size.Y;
+        }
+
+        public void LoadContent(ContentManager content)
+        {
+
+        }
+
+        public void UnloadContent(ContentManager content)
+        {
+
+        }
+
+        public void Update(GameTime gameTime)
+        {
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+
         }
     }
 }

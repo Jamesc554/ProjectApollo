@@ -19,7 +19,7 @@ namespace Game1
 
         public static void ReadFromXML(string filePath, string spriteFilePath)
         {
-            XmlTextReader reader = new XmlTextReader("Content/" + filePath);
+            XmlTextReader reader = new XmlTextReader(filePath);
 
             while (reader.Read())
             {

@@ -1,0 +1,13 @@
+<package>
+	<ModRef>BaseGame</ModRef>
+	<ModName>Base Game</ModName>
+	<Description>The Base Game</Description>
+	<Author>GammaS</Author>
+	<ModVersion>0.0.1</ModVersion>
+	<GameVersion>0.0.1</GameVersion>
+	
+	<LevelFileLocation>/Levels</LevelFileLocation>
+	<SpriteFileLocation>/Sprites</SpriteFileLocation>
+	<LuaFileLocation>/Lua</LuaFileLocation>
+	<XmlFileLocation>/Xml</XmlFileLocation>
+</package>

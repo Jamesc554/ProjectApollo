@@ -1,8 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
-
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 
 namespace Game1
 {
@@ -13,9 +16,7 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        GameObject obj = new GameObject("Error.png", new Vector2(0, 0));
-        GameObject obj1 = new GameObject("Brick.png", new Vector2(32, 0), 90);
-        GameObject obj2 = new GameObject("Tile.png", new Vector2(64, 0));
+        public List<Mod> mods;
 
         public Game1()
         {
@@ -41,6 +42,7 @@ namespace Game1
         protected override void Initialize()    
         {
             // TODO: Add your initialization logic here
+            LoadMods();
 
             base.Initialize();
         }
@@ -53,9 +55,6 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            obj.LoadContent(this.Content);
-            obj1.LoadContent(this.Content);
-            obj2.LoadContent(this.Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -94,15 +93,24 @@ namespace Game1
 
             spriteBatch.Begin();
 
-            obj.Draw(spriteBatch);
-            obj1.Draw(spriteBatch);
-            obj2.Draw(spriteBatch);
-
             spriteBatch.End();
 
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+        }
+
+        public void LoadMods()
+        {
+            List<Mod> mods = new List<Mod>();
+            DirectoryInfo d = new DirectoryInfo(Path.Combine(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())), "/Mods"));
+            DirectoryInfo[] dList = d.GetDirectories();
+            foreach(DirectoryInfo dir in dList)
+            {
+                Mod newMod = new Mod(dir.FullName);
+                mods.Add(newMod);
+                Debug.WriteLine("Mod Loaded");
+            }
         }
     }
 }
