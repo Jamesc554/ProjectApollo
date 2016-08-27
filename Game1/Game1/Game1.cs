@@ -13,11 +13,21 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D texture; 
+        GameObject obj = new GameObject("test.png", new Vector2(20, 20));
+        GameObject obj1 = new GameObject("test.png", new Vector2(100, 20), 90);
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferWidth = 1280,
+                PreferredBackBufferHeight = 720,
+                SynchronizeWithVerticalRetrace = false
+                
+            };
+            graphics.ApplyChanges();
+            this.IsFixedTimeStep = false;
+            this.IsMouseVisible = true;
             Content.RootDirectory = "Content";
         }
 
@@ -27,7 +37,7 @@ namespace Game1
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
-        protected override void Initialize()
+        protected override void Initialize()    
         {
             // TODO: Add your initialization logic here
 
@@ -42,6 +52,8 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            obj.LoadContent(this.Content);
+            obj1.LoadContent(this.Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -52,7 +64,7 @@ namespace Game1
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            // TODO: Unload any non ContentManager content heres
         }
 
         /// <summary>
@@ -77,6 +89,13 @@ namespace Game1
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            spriteBatch.Begin();
+
+            obj.Draw(spriteBatch);
+            obj1.Draw(spriteBatch);
+
+            spriteBatch.End();
 
             // TODO: Add your drawing code here
 
