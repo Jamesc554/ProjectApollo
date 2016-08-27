@@ -9,6 +9,8 @@ namespace Game1
 {
     public class Mod
     {
+        public List<World> levels = new List<World>();
+
         public string modRef;
         public string modName;
         public string modDesc;

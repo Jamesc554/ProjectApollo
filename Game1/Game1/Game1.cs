@@ -103,9 +103,7 @@ namespace Game1
         public void LoadMods()
         {
             List<Mod> mods = new List<Mod>();
-            string directory = this.Content.RootDirectory;
-            directory = directory.Remove(59);
-            DirectoryInfo d = new DirectoryInfo(directory +  "Content/Mods");
+            DirectoryInfo d = new DirectoryInfo(this.Content.RootDirectory +  "/Mods");
             DirectoryInfo[] dList = d.GetDirectories();
             foreach(DirectoryInfo dir in dList)
             {

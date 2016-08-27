@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Game1
 {
@@ -23,12 +24,14 @@ namespace Game1
 
             while (reader.Read())
             {
-                string tileFilePath;
-                tileFilePath = spriteFilePath + reader.GetAttribute("spriteLocation") + reader.GetAttribute("spriteFile");
+                if (reader.GetAttribute("R") != null)
+                {
+                    string tileFilePath;
+                    tileFilePath = spriteFilePath + reader.GetAttribute("spriteLocation") + reader.GetAttribute("spriteFile");
 
-                Tile newTile = new Tile(tileFilePath);
-                System.Drawing.Color color = System.Drawing.Color.FromArgb(int.Parse(reader.GetAttribute("R")), int.Parse(reader.GetAttribute("G")), int.Parse(reader.GetAttribute("B")));
-
+                    Tile newTile = new Tile(tileFilePath);
+                    System.Drawing.Color color = System.Drawing.Color.FromArgb(int.Parse(reader.GetAttribute("R")), int.Parse(reader.GetAttribute("G")), int.Parse(reader.GetAttribute("B")));
+                }
             }
         }
 
