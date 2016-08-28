@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +31,12 @@ namespace Game1
             modFileLocation = filePath;
             LoadMod(filePath);
             LoadTiles();
+            LoadLevels();
         }
 
         public void LoadMod(string filePath)
         {
-            XmlTextReader reader = new XmlTextReader(filePath + "/package.xml");
+            XmlTextReader reader = new XmlTextReader(filePath + "//package.xml");
 
             while (reader.Read())
             {
@@ -85,7 +88,22 @@ namespace Game1
 
         public void LoadTiles()
         {
-            Tiles.ReadFromXML(modFileLocation + xmlFileLocation + "/tiles.xml", modFileLocation + spriteFileLocation + "/");
+            Tiles.ReadFromXML(modFileLocation + xmlFileLocation + "//tiles.xml", modFileLocation + spriteFileLocation + "//");
+        }
+
+        public void LoadLevels()
+        {
+            int i = 0;
+            DirectoryInfo d = new DirectoryInfo(modFileLocation + levelFileLocation);
+            FileInfo[] files = d.GetFiles("*.png");
+            foreach (FileInfo file in files)
+            {
+                World newWorld = new World(file.FullName, "level_" + i);
+                newWorld.CreateWorld();
+                levels.Add(newWorld);
+                Debug.WriteLine("Level Added");
+                i++;
+            }
         }
 
     }

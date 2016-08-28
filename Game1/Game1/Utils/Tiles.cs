@@ -29,15 +29,16 @@ namespace Game1
                     string tileFilePath;
                     tileFilePath = spriteFilePath + reader.GetAttribute("spriteLocation") + reader.GetAttribute("spriteFile");
 
+                    Debug.WriteLine("Tile loaded: " + reader.GetAttribute("spriteFile"));
                     Tile newTile = new Tile(tileFilePath);
-                    System.Drawing.Color color = System.Drawing.Color.FromArgb(int.Parse(reader.GetAttribute("R")), int.Parse(reader.GetAttribute("G")), int.Parse(reader.GetAttribute("B")));
+                    System.Drawing.Color color = System.Drawing.Color.FromArgb(255, int.Parse(reader.GetAttribute("R")), int.Parse(reader.GetAttribute("G")), int.Parse(reader.GetAttribute("B")));
+                    AddTile(newTile, color);
                 }
             }
         }
 
         public static void AddTile(Tile tile, System.Drawing.Color color)
         {
-            tileIdDic.Add(tile.name, tiles.Count);
             tileColorDic.Add(color, tiles.Count);
             tiles.Add(tile);
         }

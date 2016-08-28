@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using System.Diagnostics;
 
 namespace Game1
 {
@@ -34,8 +35,8 @@ namespace Game1
                 for (int y = 0; y < tiles.GetLength(1); y++)
                 {
                     Tile newTile = Tiles.GetTile(level[x,y]);
-                    newTile.position.X = x;
-                    newTile.position.Y = y;
+                    newTile.position.X = x * 32;
+                    newTile.position.Y = y * 32;
                     tiles[x,y] = newTile;
                 }
             }
@@ -43,8 +44,8 @@ namespace Game1
 
         public System.Drawing.Color[,] LoadLevel()
         {
-            Bitmap image = null;
-            image = new Bitmap(WorldController.instance.content.Load<Image>(levelFilePath));
+            Debug.WriteLine("Image file path: " + levelFilePath);
+            Bitmap image = new Bitmap(levelFilePath);
 
             System.Drawing.Color[,] tempArray = new System.Drawing.Color[image.Width, image.Height];
             tiles = new Tile[image.Width, image.Height];

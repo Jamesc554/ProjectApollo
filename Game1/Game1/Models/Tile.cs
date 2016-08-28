@@ -9,6 +9,8 @@ namespace Game1
 {
     public class Tile : GameObject
     {
+        public int movementCost;
+
         public Tile(string _spriteLocation, float _angle = 0) : base(_spriteLocation, new Vector2(), _angle)
         {
 

@@ -17,9 +17,10 @@ namespace Game1
         public ContentManager content;
         public int worldSizeX, worldSizeY;
 
-        public WorldController()
+        public WorldController(ContentManager _content)
         {
             instance = this;
+            content = _content;
         }
 
         public void SetWorld(World _world)
@@ -31,22 +32,34 @@ namespace Game1
 
         public void LoadContent(ContentManager content)
         {
-
+            foreach (Tile t in world.tiles)
+            {
+                t.LoadContent(content);
+            }
         }
 
         public void UnloadContent(ContentManager content)
         {
-
+            foreach (Tile t in world.tiles)
+            {
+                t.UnloadContent(content);
+            }
         }
 
         public void Update(GameTime gameTime)
         {
-
+            foreach (Tile t in world.tiles)
+            {
+                t.Update(gameTime);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            foreach (Tile t in world.tiles)
+            {
+                t.Draw(spriteBatch);
+            }
         }
     }
 }

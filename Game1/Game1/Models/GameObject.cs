@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using System.IO;
 
 namespace Game1
 {
@@ -18,6 +19,8 @@ namespace Game1
         private float angle; // Value between 0 - 360 (Degrees)
         public string name;
 
+        public static object TextureUsage { get; private set; }
+
         public GameObject(string _spriteLocation, Vector2 _position, float _angle = 0)
         {
             spriteLocation = _spriteLocation;
@@ -27,7 +30,10 @@ namespace Game1
 
         public void LoadContent(ContentManager content)
         {
-            sprite = content.Load<Texture2D>(spriteLocation);
+            using (FileStream filestream = new FileStream(spriteLocation, FileMode.Open))
+            {
+                sprite = Texture2D.FromStream(Game1.graphics.GraphicsDevice, filestream);
+            };
         }
 
         public void UnloadContent(ContentManager content)

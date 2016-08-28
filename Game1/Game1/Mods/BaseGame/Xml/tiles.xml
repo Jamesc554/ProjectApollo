@@ -1,0 +1,9 @@
+<tiles>
+	<!-- Tiles must have a width, height and spriteFile. spriteLocation is optional and is used if the sprite is not in the default location -->
+	<!-- Example: <tile width="32" height="32" spriteLocation="BestModEver/Sprites/" + spriteFile="teleporter.png"> -->
+	<tile width="32" height="32" spriteLocation="Tiles//" spriteFile="Air.png" R="0" G="0" B="0"></tile>
+	<tile width="32" height="32" spriteLocation="Tiles//" spriteFile="Error.png" R="1" G="1" B="1"></tile>
+	<tile width="32" height="32" spriteLocation="Tiles//" spriteFile="Grass.png" R="0" G="255" B="0"></tile>
+	<tile width="32" height="32" spriteLocation="Tiles//" spriteFile="Brick.png" R="255" G="0" B="0"></tile>
+	<tile width="32" height="32" spriteLocation="Tiles//" spriteFile="Tile.png" R="0" G="0" B="255"></tile>
+</tiles>

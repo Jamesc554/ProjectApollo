@@ -14,9 +14,11 @@ namespace Game1
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
+        public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public List<Mod> mods;
+
+        WorldController worldController;
 
         public Game1()
         {
@@ -42,7 +44,9 @@ namespace Game1
         protected override void Initialize()    
         {
             // TODO: Add your initialization logic here
-            LoadMods();
+            worldController = new WorldController(this.Content);
+            mods = LoadMods();
+            worldController.SetWorld(mods[0].levels[1]);
 
             base.Initialize();
         }
@@ -55,6 +59,7 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            worldController.LoadContent(this.Content);
 
             // TODO: use this.Content to load your game content here
         }
@@ -66,6 +71,7 @@ namespace Game1
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content heres
+            worldController.UnloadContent(this.Content);
         }
 
         /// <summary>
@@ -80,6 +86,8 @@ namespace Game1
 
             // TODO: Add your update logic here
 
+            worldController.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -93,6 +101,9 @@ namespace Game1
 
             spriteBatch.Begin();
 
+            worldController.Draw(spriteBatch);
+            Server 
+
             spriteBatch.End();
 
             // TODO: Add your drawing code here
@@ -100,10 +111,10 @@ namespace Game1
             base.Draw(gameTime);
         }
 
-        public void LoadMods()
+        public List<Mod> LoadMods()
         {
             List<Mod> mods = new List<Mod>();
-            DirectoryInfo d = new DirectoryInfo(this.Content.RootDirectory +  "/Mods");
+            DirectoryInfo d = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory +  "//Mods");
             DirectoryInfo[] dList = d.GetDirectories();
             foreach(DirectoryInfo dir in dList)
             {
@@ -111,6 +122,8 @@ namespace Game1
                 mods.Add(newMod);
                 Debug.WriteLine("Mod Loaded");
             }
+
+            return mods;
         }
     }
 }
