@@ -7,12 +7,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
-namespace Game1
+namespace ProjectApollo
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class ProjectApollo : Game
     {
         public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -20,7 +20,7 @@ namespace Game1
 
         WorldController worldController;
 
-        public Game1()
+        public ProjectApollo()
         {
             graphics = new GraphicsDeviceManager(this)
             {
@@ -102,7 +102,6 @@ namespace Game1
             spriteBatch.Begin();
 
             worldController.Draw(spriteBatch);
-            Server 
 
             spriteBatch.End();
 

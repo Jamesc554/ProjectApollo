@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using System.IO;
 
-namespace Game1
+namespace ProjectApollo
 {
     public class GameObject
     {
@@ -32,7 +32,7 @@ namespace Game1
         {
             using (FileStream filestream = new FileStream(spriteLocation, FileMode.Open))
             {
-                sprite = Texture2D.FromStream(Game1.graphics.GraphicsDevice, filestream);
+                sprite = Texture2D.FromStream(ProjectApollo.graphics.GraphicsDevice, filestream);
             };
         }
 

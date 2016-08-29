@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 using System.Xml;
 using System.Diagnostics;
 
-namespace Game1
+namespace ProjectApollo
 {
     public class Tiles
     {

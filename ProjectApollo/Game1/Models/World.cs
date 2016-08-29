@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
 
-namespace Game1
+namespace ProjectApollo
 {
     public class World
     {
