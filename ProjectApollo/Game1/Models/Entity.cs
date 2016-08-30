@@ -21,7 +21,7 @@ namespace ProjectApollo
 
         public Entity(string _spriteLocation, Vector2 position, float _angle, Tile tile) : base(_spriteLocation, position, _angle)
         {
-            speed = 0.1f;
+            speed = 10f;
             currentTile = destinationTile = nextTile = tile;
         }
 
@@ -30,14 +30,6 @@ namespace ProjectApollo
             Update_DoMovement(gameTime);
             position.X = currentTile.position.X * 32;
             position.Y = currentTile.position.Y * 32;
-        }
-
-        public float X
-        {
-            get
-            {
-                return currentTile.position.X;
-            }
         }
 
         public void Update_DoMovement(GameTime gameTime)
@@ -70,7 +62,7 @@ namespace ProjectApollo
                                  Math.Pow(currentTile.position.X - nextTile.position.X, 2) +
                                  Math.Pow(currentTile.position.Y - nextTile.position.Y, 2));
 
-            float distThisFrame = speed / nextTile.movementCost;
+            float distThisFrame = speed / nextTile.movementCost * (float)gameTime.ElapsedGameTime.TotalSeconds;
             float precThisFrame = distThisFrame / distToTravel;
 
             movementPrecentage += precThisFrame;

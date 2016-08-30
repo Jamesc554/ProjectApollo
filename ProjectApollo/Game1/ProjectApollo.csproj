@@ -66,6 +66,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MouseController.cs" />
     <Compile Include="Controllers\WorldController.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Pathfinding\FastPriorityQueue.cs" />
@@ -88,6 +89,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Camera.cs" />
+    <Compile Include="Utils\InputState.cs" />
     <Compile Include="Utils\Tiles.cs" />
   </ItemGroup>
   <ItemGroup>

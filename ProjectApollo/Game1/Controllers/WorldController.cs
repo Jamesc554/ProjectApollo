@@ -74,6 +74,16 @@ namespace ProjectApollo
             world.character4.Update(gameTime);
         }
 
+        public void HandleInput(InputState inputState)
+        {
+            Vector2 mousePos = new Vector2(inputState.CurrentMouseState.Position.X, inputState.CurrentMouseState.Position.Y);
+            MouseState ms = new MouseState();
+            if (inputState.IsNewLeftMouseClick(out ms))
+            {
+                world.character.destinationTile = world.GetTileAt((int)ProjectApollo.camera.ScreenToWorld(mousePos).X, (int)ProjectApollo.camera.ScreenToWorld(mousePos).Y, true);
+            }
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (Tile t in world.tiles)

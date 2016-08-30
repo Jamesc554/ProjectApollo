@@ -17,6 +17,8 @@ namespace ProjectApollo
         public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public List<Mod> mods;
+        public static readonly Camera camera = new Camera();
+        private InputState inputState;
 
         WorldController worldController;
 
@@ -33,6 +35,8 @@ namespace ProjectApollo
             //this.IsFixedTimeStep = false;
             this.IsMouseVisible = true;
             Content.RootDirectory = "Content";
+
+            inputState = new InputState();
         }
 
         /// <summary>
@@ -47,6 +51,9 @@ namespace ProjectApollo
             worldController = new WorldController(this.Content);
             mods = LoadMods(); // Load all the mods from the mads folder.
             worldController.SetWorld(mods[0].levels[1]); // Set the current level to the first mods second level.
+
+            camera.viewportWidth = graphics.GraphicsDevice.Viewport.Width;
+            camera.viewportHeight = graphics.GraphicsDevice.Viewport.Height;
 
             base.Initialize();
         }
@@ -86,6 +93,9 @@ namespace ProjectApollo
 
             // TODO: Add your update logic here
 
+            inputState.Update();
+            camera.HandleInput(inputState, null);
+            worldController.HandleInput(inputState);
             worldController.Update(gameTime);
 
             base.Update(gameTime);
@@ -99,7 +109,7 @@ namespace ProjectApollo
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.TranslationMatrix);
 
             worldController.Draw(spriteBatch);
 

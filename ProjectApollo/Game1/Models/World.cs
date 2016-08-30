@@ -81,8 +81,20 @@ namespace ProjectApollo
             return tempArray;
         }
 
-        public Tile GetTileAt(int x, int y)
+        public Tile GetTileAt(int x, int y, bool worldCoords = false)
         {
+            if (worldCoords)
+            {
+                Debug.WriteLine("Mouse Clicked at: X:" + x + " Y:" + y);
+                Debug.WriteLine("Mouse Clicked at: X:" + x + " Y:" + y);
+
+                x = x / 32;
+                y = y / 32;
+
+                Debug.WriteLine("Mouse Clicked at: X:" + x + " Y:" + y);
+                Debug.WriteLine("Mouse Clicked at: X:" + x + " Y:" + y);
+            }
+
             if (x >= size.X || x < 0 || y >= size.Y || y < 0)
             {
                 //Debug.LogError("Tile ("+x+","+y+") is out of range.");
