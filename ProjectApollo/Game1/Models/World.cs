@@ -53,11 +53,11 @@ namespace ProjectApollo
             character2 = new Entity(Tiles.GetTile(2).spriteLocation, new Vector2(), 0, tiles[24,4]);
             character3 = new Entity(Tiles.GetTile(2).spriteLocation, new Vector2(), 0, tiles[6,6]);
             character4 = new Entity(Tiles.GetTile(2).spriteLocation, new Vector2(), 0, tiles[10,10]);
-            character.destinationTile = tiles[10, 6];
-            character1.destinationTile = tiles[10, 6];
-            character2.destinationTile = tiles[10, 6];
-            character3.destinationTile = tiles[10, 6];
-            character4.destinationTile = tiles[10, 6];
+            character.destinationTile = tiles[51, 3];
+            character1.destinationTile = tiles[51, 3];
+            character2.destinationTile = tiles[51, 3];
+            character3.destinationTile = tiles[51, 3];
+            character4.destinationTile = tiles[51, 3];
         }
 
         public System.Drawing.Color[,] LoadLevel()

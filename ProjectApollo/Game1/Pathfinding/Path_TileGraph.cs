@@ -20,9 +20,13 @@ namespace ProjectApollo
                 for (int y = 0; y < world.size.Y; y++)
                 {
                     Tile t = world.GetTileAt(x, y);
-                    Path_Node<Tile> n = new Path_Node<Tile>();
-                    n.data = t;
-                    nodes.Add(t, n);
+
+                    if (t.movementCost > 0)
+                    {
+                        Path_Node<Tile> n = new Path_Node<Tile>();
+                        n.data = t;
+                        nodes.Add(t, n);
+                    }
                 }
             }
 

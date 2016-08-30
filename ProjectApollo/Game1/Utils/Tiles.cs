@@ -31,6 +31,7 @@ namespace ProjectApollo
 
                     Debug.WriteLine("Tile loaded: " + reader.GetAttribute("spriteFile"));
                     Tile newTile = new Tile(tileFilePath);
+                    newTile.movementCost = int.Parse(reader.GetAttribute("movementCost"));
                     System.Drawing.Color color = System.Drawing.Color.FromArgb(255, int.Parse(reader.GetAttribute("R")), int.Parse(reader.GetAttribute("G")), int.Parse(reader.GetAttribute("B")));
                     AddTile(newTile, color);
                 }
@@ -61,6 +62,7 @@ namespace ProjectApollo
         {
             Tile oldTile = tiles[tileColorDic[color]];
             Tile newTile = new Tile(oldTile.spriteLocation);
+            newTile.movementCost = oldTile.movementCost;
             return newTile;
         }
     }
