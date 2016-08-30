@@ -13,13 +13,38 @@ namespace ProjectApollo
 {
     public class GameObject
     {
-        private Texture2D sprite;
+        protected Texture2D sprite;
         public string spriteLocation;
         public Vector2 position;
-        private float angle; // Value between 0 - 360 (Degrees)
+        protected float angle; // Value between 0 - 360 (Degrees)
         public string name;
 
-        public static object TextureUsage { get; private set; }
+        public int X
+        {
+            get
+            {
+                return (int)position.X;
+            }
+
+            set
+            {
+                position.X = value;
+            }
+        }
+
+        public int Y
+        {
+            get
+            {
+                return (int)position.Y;
+            }
+
+            set
+            {
+                position.Y = value;
+            }
+        }
+
 
         public GameObject(string _spriteLocation, Vector2 _position, float _angle = 0)
         {
@@ -41,12 +66,12 @@ namespace ProjectApollo
             content.Unload();
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             Vector2 newPos = new Vector2(position.X + (sprite.Width / 2), position.Y + (sprite.Height / 2));
             spriteBatch.Draw(sprite, newPos, new Rectangle(0, 0, sprite.Width, sprite.Height), Color.White, angle, new Vector2(sprite.Width / 2, sprite.Height / 2), 1.0f, SpriteEffects.None, 1);

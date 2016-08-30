@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,36 @@ namespace ProjectApollo
                     nodes.Add(t, n);
                 }
             }
+
+            Debug.WriteLine("Path_TileGraph: Created " + nodes.Count + " nodes.");
+
+            int edgeCount = 0;
+
+            foreach(Tile t in nodes.Keys)
+            {
+                Path_Node<Tile> n = nodes[t];
+
+                List<Path_Edge<Tile>> edges = new List<Path_Edge<Tile>>();
+
+                Tile[] neighbours = t.GetNeighbours();
+
+                for(int i = 0; i < neighbours.Length; i++)
+                {
+                    if (neighbours[i] != null && neighbours[i].movementCost > 0 && IsClippingCorner(t, neighbours[i]) == false)
+                    {
+                        Path_Edge<Tile> e = new Path_Edge<Tile>();
+                        e.cost = neighbours[i].movementCost;
+                        e.node = nodes[neighbours[i]];
+
+                        edges.Add(e);
+                        edgeCount++;
+                    }
+                }
+
+                n.edges = edges.ToArray();
+            }
+
+            Debug.WriteLine("Path_TileGraph: Created " + edgeCount + " edges.");
         }
 
         public void RegenerateGraphAtTile(Tile changedTile)

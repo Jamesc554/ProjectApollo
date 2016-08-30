@@ -67,6 +67,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controllers\WorldController.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Pathfinding\FastPriorityQueue.cs" />
+    <Compile Include="Pathfinding\FastPriorityQueueNode.cs" />
+    <Compile Include="Pathfinding\IPriorityQueue.cs" />
+    <Compile Include="Pathfinding\SimplePriorityQueue.cs" />
     <Compile Include="ProjectApollo.cs" />
     <Compile Include="Models\GameObject.cs" />
     <Compile Include="Models\Mod.cs" />

@@ -15,10 +15,16 @@ namespace ProjectApollo
     public class World
     {
         public Tile[,] tiles;
+        public Entity character;
+        public Entity character1;
+        public Entity character2;
+        public Entity character3;
+        public Entity character4;
         public System.Drawing.Color[,] level;
         public string levelName;
         public string levelFilePath;
         public Vector2 size;
+        public Path_TileGraph tileGraph;
 
         public World(string _levelFilePath, string _levelName)
         {
@@ -35,11 +41,23 @@ namespace ProjectApollo
                 for (int y = 0; y < tiles.GetLength(1); y++)
                 {
                     Tile newTile = Tiles.GetTile(level[x,y]);
-                    newTile.position.X = x * 32;
-                    newTile.position.Y = y * 32;
+                    newTile.position.X = x;
+                    newTile.position.Y = y;
                     tiles[x,y] = newTile;
                 }
             }
+
+
+            character = new Entity(Tiles.GetTile(2).spriteLocation, new Vector2(), 0, tiles[1,1]);
+            character1 = new Entity(Tiles.GetTile(2).spriteLocation, new Vector2(), 0, tiles[1,10]);
+            character2 = new Entity(Tiles.GetTile(2).spriteLocation, new Vector2(), 0, tiles[24,4]);
+            character3 = new Entity(Tiles.GetTile(2).spriteLocation, new Vector2(), 0, tiles[6,6]);
+            character4 = new Entity(Tiles.GetTile(2).spriteLocation, new Vector2(), 0, tiles[10,10]);
+            character.destinationTile = tiles[10, 6];
+            character1.destinationTile = tiles[10, 6];
+            character2.destinationTile = tiles[10, 6];
+            character3.destinationTile = tiles[10, 6];
+            character4.destinationTile = tiles[10, 6];
         }
 
         public System.Drawing.Color[,] LoadLevel()
@@ -65,6 +83,12 @@ namespace ProjectApollo
 
         public Tile GetTileAt(int x, int y)
         {
+            if (x >= size.X || x < 0 || y >= size.Y || y < 0)
+            {
+                //Debug.LogError("Tile ("+x+","+y+") is out of range.");
+                return null;
+            }
+
             return tiles[x, y];
         }
 

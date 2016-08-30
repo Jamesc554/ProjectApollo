@@ -36,6 +36,12 @@ namespace ProjectApollo
             {
                 t.LoadContent(content);
             }
+
+            world.character.LoadContent(content);
+            world.character1.LoadContent(content);
+            world.character2.LoadContent(content);
+            world.character3.LoadContent(content);
+            world.character4.LoadContent(content);
         }
 
         public void UnloadContent(ContentManager content)
@@ -44,6 +50,12 @@ namespace ProjectApollo
             {
                 t.UnloadContent(content);
             }
+
+            world.character.UnloadContent(content);
+            world.character1.UnloadContent(content);
+            world.character2.UnloadContent(content);
+            world.character3.UnloadContent(content);
+            world.character4.UnloadContent(content);
         }
 
         public void Update(GameTime gameTime)
@@ -52,6 +64,12 @@ namespace ProjectApollo
             {
                 t.Update(gameTime);
             }
+
+            world.character.Update(gameTime);
+            world.character1.Update(gameTime);
+            world.character2.Update(gameTime);
+            world.character3.Update(gameTime);
+            world.character4.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -60,6 +78,12 @@ namespace ProjectApollo
             {
                 t.Draw(spriteBatch);
             }
+
+            world.character.Draw(spriteBatch);
+            world.character1.Draw(spriteBatch);
+            world.character2.Draw(spriteBatch);
+            world.character3.Draw(spriteBatch);
+            world.character4.Draw(spriteBatch);
         }
     }
 }

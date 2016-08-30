@@ -24,8 +24,8 @@ namespace ProjectApollo
         {
             graphics = new GraphicsDeviceManager(this)
             {
-                PreferredBackBufferWidth = 1280,
-                PreferredBackBufferHeight = 720,
+                PreferredBackBufferWidth = 1920,
+                PreferredBackBufferHeight = 1080,
                 SynchronizeWithVerticalRetrace = false
                 
             };
@@ -45,8 +45,8 @@ namespace ProjectApollo
         {
             // TODO: Add your initialization logic here
             worldController = new WorldController(this.Content);
-            mods = LoadMods();
-            worldController.SetWorld(mods[0].levels[1]);
+            mods = LoadMods(); // Load all the mods from the mads folder.
+            worldController.SetWorld(mods[0].levels[1]); // Set the current level to the first mods second level.
 
             base.Initialize();
         }
