@@ -23,6 +23,8 @@ namespace ProjectApollo
             content = _content;
         }
 
+
+         //Stuff
         public void SetWorld(World _world)
         {
             world = _world;
