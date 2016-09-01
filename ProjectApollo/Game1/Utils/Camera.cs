@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using MoonSharp.Interpreter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectApollo
 {
+    [MoonSharpUserData]
     public class Camera
     {
         public Vector2 position { get; private set; }
@@ -68,6 +70,30 @@ namespace ProjectApollo
         public Vector2 ScreenToWorld(Vector2 screenPosition)
         {
             return Vector2.Transform(screenPosition, Matrix.Invert(TranslationMatrix));
+        }
+
+        public int WorldToScreenX(int x, int y)
+        {
+            Vector2 newVec2 = Vector2.Transform(new Vector2(x, y), TranslationMatrix);
+            return (int)newVec2.X;
+        }
+
+        public int WorldToScreenY(int x, int y)
+        {
+            Vector2 newVec2 = Vector2.Transform(new Vector2(x, y), TranslationMatrix);
+            return (int)newVec2.Y;
+        }
+
+        public int ScreenToWorldX(int x, int y)
+        {
+            Vector2 newVec2 = Vector2.Transform(new Vector2(x, y), Matrix.Invert(TranslationMatrix));
+            return (int)newVec2.X;
+        }
+
+        public int ScreenToWorldY(int x, int y)
+        {
+            Vector2 newVec2 = Vector2.Transform(new Vector2(x, y), Matrix.Invert(TranslationMatrix));
+            return (int)newVec2.Y;
         }
 
         public void HandleInput(InputState inputState,

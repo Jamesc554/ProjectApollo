@@ -31,6 +31,7 @@ namespace ProjectApollo
             modFileLocation = filePath;
             LoadMod(filePath);
             LoadTiles();
+            LoadButtons();
             LoadLevels();
         }
 
@@ -89,6 +90,11 @@ namespace ProjectApollo
         public void LoadTiles()
         {
             Tiles.ReadFromXML(modFileLocation + xmlFileLocation + "//tiles.xml", modFileLocation + spriteFileLocation + "//");
+        }
+
+        public void LoadButtons()
+        {
+            GUIButtons.ReadFromXML(modFileLocation + xmlFileLocation + "//buttons.xml", modFileLocation + spriteFileLocation + "//");
         }
 
         public void LoadLevels()

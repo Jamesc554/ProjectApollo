@@ -21,26 +21,82 @@ namespace ProjectApollo
         public static void ReadFromXML(string filePath, string spriteFilePath)
         {
             XmlTextReader reader = new XmlTextReader(filePath);
+            Tile newTile = null;
+            System.Drawing.Color color = new System.Drawing.Color();
+            string spriteLocation = "";
+            string tileName = "";
 
             while (reader.Read())
             {
-                if (reader.GetAttribute("R") != null)
+                switch (reader.Name)
                 {
-                    string tileFilePath;
-                    tileFilePath = spriteFilePath + reader.GetAttribute("spriteLocation") + reader.GetAttribute("spriteFile");
+                    case ("name"):
+                        reader.Read();
+                        newTile = null;
+                        tileName = reader.ReadContentAsString();
+                        break;
+                    case ("spriteFolder"):
+                        reader.Read();
+                        spriteLocation = spriteFilePath + reader.ReadContentAsString() + "//";
+                        break;
+                    case ("spriteFile"):
+                        reader.Read();
+                        spriteLocation += reader.ReadContentAsString();
 
-                    Debug.WriteLine("Tile loaded: " + reader.GetAttribute("spriteFile"));
-                    Tile newTile = new Tile(tileFilePath);
-                    newTile.movementCost = int.Parse(reader.GetAttribute("movementCost"));
-                    System.Drawing.Color color = System.Drawing.Color.FromArgb(255, int.Parse(reader.GetAttribute("R")), int.Parse(reader.GetAttribute("G")), int.Parse(reader.GetAttribute("B")));
-                    AddTile(newTile, color);
+                        newTile = new Tile(spriteLocation);
+                        break;
+                    case ("movementCost"):
+                        reader.Read();
+                        newTile.movementCost = reader.ReadContentAsInt();
+                        break;
+                    case ("color"):
+                        if (reader.IsStartElement())
+                            color = System.Drawing.Color.FromArgb(255, int.Parse(reader["R"]), int.Parse(reader["G"]), int.Parse(reader["B"]));
+                        break;
+                    case ("buildTime"):
+                        reader.Read();
+                        newTile.buildingTime = reader.ReadContentAsFloat();
+                        AddTile(newTile, color, tileName);
+                        break;
+                    //case ("BuildingRequirements"):
+
+                    //    List<string> invs = new List<string>();
+
+                    //    XmlReader inventoryReader = reader.ReadSubtree();
+
+                    //    while (inventoryReader.Name == "item")
+                    //    {
+                    //        invs.Add(inventoryReader.GetAttribute("name") + inventoryReader.GetAttribute("amount"));
+                    //    }
+
+                    //    break;
+                }
+
+                if (newTile != null)
+                {
                 }
             }
+
+            //while (reader.Read())
+            //{
+            //    if (reader.GetAttribute("R") != null)
+            //    {
+            //        string tileFilePath;
+            //        tileFilePath = spriteFilePath + reader.GetAttribute("spriteLocation") + reader.GetAttribute("spriteFile");
+
+            //        Debug.WriteLine("Tile loaded: " + reader.GetAttribute("spriteFile"));
+            //        Tile newTile = new Tile(tileFilePath);
+            //        newTile.movementCost = int.Parse(reader.GetAttribute("movementCost"));
+            //        System.Drawing.Color color = System.Drawing.Color.FromArgb(255, int.Parse(reader.GetAttribute("R")), int.Parse(reader.GetAttribute("G")), int.Parse(reader.GetAttribute("B")));
+            //        AddTile(newTile, color);
+            //    }
+            //}
         }
 
-        public static void AddTile(Tile tile, System.Drawing.Color color)
+        public static void AddTile(Tile tile, System.Drawing.Color color, string name)
         {
             tileColorDic.Add(color, tiles.Count);
+            tileIdDic.Add(name, tiles.Count);
             tiles.Add(tile);
         }
 

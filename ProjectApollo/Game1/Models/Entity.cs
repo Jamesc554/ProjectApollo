@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using MoonSharp.Interpreter;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjectApollo
 {
+    [MoonSharpUserData]
     public class Entity : GameObject
     {
         public Vector2 velocity;
@@ -51,7 +53,7 @@ namespace ProjectApollo
                         return;
                     }
 
-                    Debug.WriteLine("Moving to new tile, X: " + nextTile.position.X + " Y: " + nextTile.position.Y);
+                    //Debug.WriteLine("Moving to new tile, X: " + nextTile.position.X + " Y: " + nextTile.position.Y);
                     nextTile = pathAStar.Dequeue();
                 }
 
@@ -69,7 +71,7 @@ namespace ProjectApollo
 
             if (movementPrecentage >= 1)
             {
-                Debug.WriteLine("Moving to new tile, X: " + nextTile.position.X + " Y: " + nextTile.position.Y);
+                //Debug.WriteLine("Moving to new tile, X: " + nextTile.position.X + " Y: " + nextTile.position.Y);
 
                 currentTile = nextTile;
                 movementPrecentage = 0;

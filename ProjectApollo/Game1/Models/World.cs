@@ -9,9 +9,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
+using MoonSharp.Interpreter;
 
 namespace ProjectApollo
 {
+    [MoonSharpUserData]
     public class World
     {
         public Tile[,] tiles;
@@ -20,6 +22,9 @@ namespace ProjectApollo
         public Entity character2;
         public Entity character3;
         public Entity character4;
+
+        public Button buttonBuild;
+
         public System.Drawing.Color[,] level;
         public string levelName;
         public string levelFilePath;
@@ -58,6 +63,10 @@ namespace ProjectApollo
             character2.destinationTile = tiles[51, 3];
             character3.destinationTile = tiles[51, 3];
             character4.destinationTile = tiles[51, 3];
+
+            buttonBuild = GUIButtons.GetButton(0);
+            buttonBuild.X = 0;
+            buttonBuild.Y = 0;
         }
 
         public System.Drawing.Color[,] LoadLevel()

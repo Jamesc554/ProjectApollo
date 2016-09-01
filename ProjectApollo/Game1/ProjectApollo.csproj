@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Controllers\MouseController.cs" />
     <Compile Include="Controllers\WorldController.cs" />
+    <Compile Include="GUI\Button.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Pathfinding\FastPriorityQueue.cs" />
     <Compile Include="Pathfinding\FastPriorityQueueNode.cs" />
@@ -89,8 +90,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Utils\GUIButtons.cs" />
     <Compile Include="Utils\Camera.cs" />
     <Compile Include="Utils\InputState.cs" />
+    <Compile Include="Utils\LuaUtils.cs" />
     <Compile Include="Utils\Tiles.cs" />
   </ItemGroup>
   <ItemGroup>

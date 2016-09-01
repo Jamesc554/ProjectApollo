@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MoonSharp.Interpreter;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,6 +10,7 @@ using System.Reflection;
 
 namespace ProjectApollo
 {
+    [MoonSharpUserData]
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
@@ -47,6 +49,8 @@ namespace ProjectApollo
         /// </summary>
         protected override void Initialize()    
         {
+            UserData.RegisterAssembly();
+
             // TODO: Add your initialization logic here
             worldController = new WorldController(this.Content);
             mods = LoadMods(); // Load all the mods from the mads folder.

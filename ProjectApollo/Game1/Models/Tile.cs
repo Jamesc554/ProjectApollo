@@ -5,13 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MoonSharp.Interpreter;
 
 namespace ProjectApollo
 {
+    [MoonSharpUserData]
     public class Tile : GameObject
     {
         public int movementCost = 1;
         public int timesSteppedOn;
+        public float buildingTime;
 
         public Tile(string _spriteLocation, float _angle = 0) : base(_spriteLocation, new Vector2(), _angle)
         {

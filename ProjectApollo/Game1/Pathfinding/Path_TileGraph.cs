@@ -30,7 +30,7 @@ namespace ProjectApollo
                 }
             }
 
-            Debug.WriteLine("Path_TileGraph: Created " + nodes.Count + " nodes.");
+           // Debug.WriteLine("Path_TileGraph: Created " + nodes.Count + " nodes.");
 
             int edgeCount = 0;
 
@@ -58,7 +58,7 @@ namespace ProjectApollo
                 n.edges = edges.ToArray();
             }
 
-            Debug.WriteLine("Path_TileGraph: Created " + edgeCount + " edges.");
+            //Debug.WriteLine("Path_TileGraph: Created " + edgeCount + " edges.");
         }
 
         public void RegenerateGraphAtTile(Tile changedTile)

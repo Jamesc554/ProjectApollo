@@ -7,9 +7,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using MoonSharp.Interpreter;
 
 namespace ProjectApollo
 {
+    [MoonSharpUserData]
     public class WorldController
     {
         public World world;
@@ -44,6 +46,8 @@ namespace ProjectApollo
             world.character2.LoadContent(content);
             world.character3.LoadContent(content);
             world.character4.LoadContent(content);
+
+            world.buttonBuild.LoadContent(content);
         }
 
         public void UnloadContent(ContentManager content)
@@ -58,6 +62,8 @@ namespace ProjectApollo
             world.character2.UnloadContent(content);
             world.character3.UnloadContent(content);
             world.character4.UnloadContent(content);
+
+            world.buttonBuild.UnloadContent(content);
         }
 
         public void Update(GameTime gameTime)
@@ -72,6 +78,8 @@ namespace ProjectApollo
             world.character2.Update(gameTime);
             world.character3.Update(gameTime);
             world.character4.Update(gameTime);
+
+            world.buttonBuild.Update(gameTime);
         }
 
         public void HandleInput(InputState inputState)
@@ -82,6 +90,8 @@ namespace ProjectApollo
             {
                 world.character.destinationTile = world.GetTileAt((int)ProjectApollo.camera.ScreenToWorld(mousePos).X, (int)ProjectApollo.camera.ScreenToWorld(mousePos).Y, true);
             }
+
+            world.buttonBuild.HandleInput(inputState);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -96,6 +106,8 @@ namespace ProjectApollo
             world.character2.Draw(spriteBatch);
             world.character3.Draw(spriteBatch);
             world.character4.Draw(spriteBatch);
+
+            world.buttonBuild.Draw(spriteBatch);
         }
     }
 }

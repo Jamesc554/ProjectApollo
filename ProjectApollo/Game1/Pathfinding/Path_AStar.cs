@@ -64,7 +64,7 @@ namespace ProjectApollo
             while (openSet.Count > 0)
             {
                 Path_Node<Tile> current = openSet.Dequeue();
-                Debug.WriteLine("Next Node: X:" + current.data.position.X + " Y:" + current.data.position.Y);
+               // Debug.WriteLine("Next Node: X:" + current.data.position.X + " Y:" + current.data.position.Y);
 
                 if (goal != null)
                 {
@@ -122,7 +122,7 @@ namespace ProjectApollo
 
             Tile t = path.Dequeue();
 
-            Debug.WriteLine("New tile selected X:" + t.position.X + " Y: " + t.position.Y);
+            //Debug.WriteLine("New tile selected X:" + t.position.X + " Y: " + t.position.Y);
 
             return t;
         }
@@ -188,12 +188,12 @@ namespace ProjectApollo
             {
                 current = cameFrom[current];
                 totalPath.Enqueue(current.data);
-                Debug.WriteLine("Moving to new tile, X: " + current.data.position.X + " Y: " + current.data.position.Y);
+                //Debug.WriteLine("Moving to new tile, X: " + current.data.position.X + " Y: " + current.data.position.Y);
             }
 
 
             path = new Queue<Tile>(totalPath.Reverse());
-            Debug.WriteLine("Path size: " + path.Count);
+            //Debug.WriteLine("Path size: " + path.Count);
         }
     }
 }

@@ -8,9 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using System.IO;
+using MoonSharp.Interpreter;
 
 namespace ProjectApollo
 {
+    [MoonSharpUserData]
     public class GameObject
     {
         protected Texture2D sprite;
