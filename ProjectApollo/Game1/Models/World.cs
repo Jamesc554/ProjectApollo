@@ -115,7 +115,17 @@ namespace ProjectApollo
 
         public void SetTile(int x, int y, Tile tile)
         {
-            tiles[x, y] = tile;
+            tiles[x, y].spriteLocation = tile.spriteLocation;
+            tiles[x, y].name = tile.name;
+            tiles[x, y].movementCost = tile.movementCost;
+            tiles[x, y].timesSteppedOn = 0;
+            tiles[x, y].buildingTime = tile.buildingTime;
+            tiles[x, y].LoadContent();
+
+            if (WorldController.instance.world.tileGraph != null)
+            {
+                WorldController.instance.world.tileGraph.RegenerateGraphAtTile(tiles[x,y]);
+            }
         }
     }
 }

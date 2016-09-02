@@ -70,6 +70,8 @@
     <Compile Include="Controllers\WorldController.cs" />
     <Compile Include="GUI\Button.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\Furniture.cs" />
+    <Compile Include="Models\Job.cs" />
     <Compile Include="Pathfinding\FastPriorityQueue.cs" />
     <Compile Include="Pathfinding\FastPriorityQueueNode.cs" />
     <Compile Include="Pathfinding\IPriorityQueue.cs" />

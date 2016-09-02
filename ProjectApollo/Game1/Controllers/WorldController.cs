@@ -15,7 +15,10 @@ namespace ProjectApollo
     public class WorldController
     {
         public World world;
+
         public static WorldController instance;
+        public MouseController mouseController;
+
         public ContentManager content;
         public int worldSizeX, worldSizeY;
 
@@ -23,6 +26,8 @@ namespace ProjectApollo
         {
             instance = this;
             content = _content;
+
+            mouseController = new MouseController();
         }
 
 
@@ -38,16 +43,16 @@ namespace ProjectApollo
         {
             foreach (Tile t in world.tiles)
             {
-                t.LoadContent(content);
+                t.LoadContent();
             }
 
-            world.character.LoadContent(content);
-            world.character1.LoadContent(content);
-            world.character2.LoadContent(content);
-            world.character3.LoadContent(content);
-            world.character4.LoadContent(content);
+            world.character.LoadContent();
+            world.character1.LoadContent();
+            world.character2.LoadContent();
+            world.character3.LoadContent();
+            world.character4.LoadContent();
 
-            world.buttonBuild.LoadContent(content);
+            world.buttonBuild.LoadContent();
         }
 
         public void UnloadContent(ContentManager content)
@@ -91,6 +96,7 @@ namespace ProjectApollo
                 world.character.destinationTile = world.GetTileAt((int)ProjectApollo.camera.ScreenToWorld(mousePos).X, (int)ProjectApollo.camera.ScreenToWorld(mousePos).Y, true);
             }
 
+            mouseController.HandleInput(inputState);
             world.buttonBuild.HandleInput(inputState);
         }
 

@@ -104,14 +104,16 @@ namespace ProjectApollo
         {
             Tile oldTile = tiles[tileIdDic[tileName]];
             Tile newTile = new Tile(oldTile.spriteLocation);
-            return newTile;
+            newTile.movementCost = oldTile.movementCost;
+            return (Tile)oldTile.Clone();
         }
 
         public static Tile GetTile(int tileId)
         {
             Tile oldTile = tiles[tileId];
             Tile newTile = new Tile(oldTile.spriteLocation);
-            return newTile;
+            newTile.movementCost = oldTile.movementCost;
+            return (Tile)oldTile.Clone();
         }
 
         public static Tile GetTile(System.Drawing.Color color)
@@ -119,7 +121,7 @@ namespace ProjectApollo
             Tile oldTile = tiles[tileColorDic[color]];
             Tile newTile = new Tile(oldTile.spriteLocation);
             newTile.movementCost = oldTile.movementCost;
-            return newTile;
+            return (Tile)oldTile.Clone();
         }
     }
 }

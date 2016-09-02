@@ -10,7 +10,7 @@ using MoonSharp.Interpreter;
 namespace ProjectApollo
 {
     [MoonSharpUserData]
-    public class Tile : GameObject
+    public class Tile : GameObject, ICloneable
     {
         public int movementCost = 1;
         public int timesSteppedOn;
@@ -18,7 +18,7 @@ namespace ProjectApollo
 
         public Tile(string _spriteLocation, float _angle = 0) : base(_spriteLocation, new Vector2(), _angle)
         {
-
+            LoadContent();
         }
 
         public Tile[] GetNeighbours(bool diagOkay = false)
@@ -64,6 +64,11 @@ namespace ProjectApollo
         {
             Vector2 newPos = new Vector2((position.X * 32) + (sprite.Width / 2), (position.Y * 32) + (sprite.Height / 2));
             spriteBatch.Draw(sprite, newPos, new Rectangle(0, 0, sprite.Width, sprite.Height), Color.White, angle, new Vector2(sprite.Width / 2, sprite.Height / 2), 1.0f, SpriteEffects.None, 1);
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

@@ -40,8 +40,6 @@ namespace ProjectApollo
 
         public void HandleInput(InputState inputState)
         {
-
-
             Vector2 mousePos = new Vector2(inputState.CurrentMouseState.Position.X, inputState.CurrentMouseState.Position.Y);
             MouseState ms = new MouseState();
             if (EnterButton(mousePos) && inputState.IsNewLeftMouseClick(out ms))

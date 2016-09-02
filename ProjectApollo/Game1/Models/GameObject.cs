@@ -55,7 +55,7 @@ namespace ProjectApollo
             angle = _angle;
         }
 
-        public void LoadContent(ContentManager content)
+        public void LoadContent()
         {
             using (FileStream filestream = new FileStream(spriteLocation, FileMode.Open))
             {

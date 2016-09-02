@@ -17,6 +17,7 @@ namespace ProjectApollo
         public Tile currentTile;
         public Tile destinationTile;
         public Tile nextTile;
+        public Job currentJob;
 
         private Path_AStar pathAStar;
         float movementPrecentage;
